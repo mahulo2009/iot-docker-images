@@ -1,0 +1,29 @@
+--- /opt/gcs/tools/nrp	2021-07-12 09:34:20.588803500 +0000
++++ /opt/gcs/tools/nrp	2021-07-12 10:44:22.818803500 +0000
+@@ -662,6 +662,8 @@
+ 			LD_LIBRARY_PATH=$(subsVar -r ${EXT}/libusb/lib/${oldPlatform}                 $LD_LIBRARY_PATH)
+ 			LD_LIBRARY_PATH=$(subsVar -r ${EXT}/megara-fmpt/lib/${oldPlatform}                 $LD_LIBRARY_PATH)
+ 			LD_LIBRARY_PATH=$(subsVar -r ${EXT}/ESDCan4CanOpen/lib/${oldPlatform}                 $LD_LIBRARY_PATH)
++			LD_LIBRARY_PATH=$(subsVar -r ${EXT}/yamlcpp_0.7.0/lib/${oldPlatform}                 $LD_LIBRARY_PATH)
++			LD_LIBRARY_PATH=$(subsVar -r ${EXT}/rabbitmq_c_0.11.0/lib/${oldPlatform}                 $LD_LIBRARY_PATH)
+ 		else
+ 			LD_LIBRARY_PATH=$(subsVar -r ${EXT}/gsl_1.7/lib/${oldPlatform}                     $LD_LIBRARY_PATH)
+ 			LD_LIBRARY_PATH=$(subsVar -r ${EXT}/fitsio_2.4/lib/${oldPlatform}                  $LD_LIBRARY_PATH)
+@@ -705,6 +707,8 @@
+ 			LD_LIBRARY_PATH=$(subsVar -r ${oldGCS}/ext/opencv/lib/${oldPlatform}                 $LD_LIBRARY_PATH)
+ 			LD_LIBRARY_PATH=$(subsVar -r ${oldGCS}/ext/megara-fmpt/lib/${oldPlatform}                 $LD_LIBRARY_PATH)
+ 			LD_LIBRARY_PATH=$(subsVar -r ${oldGCS}/ext/ESDCan4CanOpen/lib/${oldPlatform}                 $LD_LIBRARY_PATH)
++			LD_LIBRARY_PATH=$(subsVar -r ${oldGCS}/ext/yamlcpp_0.7.0/lib/${oldPlatform}                 $LD_LIBRARY_PATH)
++			LD_LIBRARY_PATH=$(subsVar -r ${oldGCS}/ext/rabbitmq_c_0.11.0/lib/${oldPlatform}                 $LD_LIBRARY_PATH)
+ 
+ 		else
+ 			LD_LIBRARY_PATH=$(subsVar -r ${oldGCS}/ext/gsl_1.7/lib/${oldPlatform}                     $LD_LIBRARY_PATH)
+@@ -822,6 +826,8 @@
+ 			LD_LIBRARY_PATH=$(subsVar -e ${EXT}/opencv/lib/${g_newPlatform} ${LD_LIBRARY_PATH})
+ 			LD_LIBRARY_PATH=$(subsVar -e ${EXT}/megara-fmpt/lib/${g_newPlatform} ${LD_LIBRARY_PATH})
+ 			LD_LIBRARY_PATH=$(subsVar -e ${EXT}/ESDCan4CanOpen/lib/${g_newPlatform} ${LD_LIBRARY_PATH})
++			LD_LIBRARY_PATH=$(subsVar -e ${EXT}/yamlcpp_0.7.0/lib/${g_newPlatform} ${LD_LIBRARY_PATH})
++			LD_LIBRARY_PATH=$(subsVar -e ${EXT}/rabbitmq_c_0.11.0/lib/${g_newPlatform} ${LD_LIBRARY_PATH})
+ 			
+ 		else
+ 			LD_LIBRARY_PATH=$(subsVar -e ${EXT}/gsl_1.7/lib/${g_newPlatform}             ${LD_LIBRARY_PATH})

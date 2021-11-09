@@ -1,0 +1,23 @@
+413a414,415
+>   char hostname_ior_arg[256];
+>   memset(hostname_ior_arg, 0, 256);
+451c453
+<     cl.addOption("-ORBendpoint", endpoint);
+---
+>     // cl.addOption("-ORBendpoint", endpoint);
+453a456,466
+>   char* host_address = ACE_OS::getenv("GCS_DOCKER_HOST_ADDRESS");
+>   if (host_address != 0) 
+>     sprintf(hostname_ior_arg, "&hostname_in_ior=%s", host_address);
+> 
+>   sprintf(endpoint, "iiop://%s:25000/portspan=100%s", ifce_host_name, hostname_ior_arg);
+>   cl.addOption("-ORBListenEndpoints", endpoint);
+>   cl.addOption("-ORBDottedDecimalAddresses", "1");
+>   cl.addOption("-ORBNoServerSideNameLookups", "1");
+> 
+> 
+> 
+455c468
+<   if (! cl.checkOption("-ORBendpoint") )
+---
+>   if (! cl.checkOption("-ORBListenEndpoints") )
