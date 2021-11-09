@@ -1,0 +1,65 @@
+--- /opt/gcs/tools/functions/fnmk.cpp.module	2021-07-05 11:30:32.563103500 +0000
++++ /opt/gcs/tools/functions/fnmk.cpp.module	2021-07-05 11:33:27.583103500 +0000
+@@ -72,6 +72,10 @@
+ 
+ # Global definitions for internal use only
+ typeset g_CPP_moduleDescriptorFileOpen_flag="0"
++typeset g_CPP_template_regex='^[[:space:]]*#.*include'
++typeset g_CPP_cpptemplate_regex='\.cpp\"([[:space:]]*\/\/[^\r\n]*)?'
++typeset g_CPP_template_sed_commands='s/.*\"\(.*\)\"/\1/g;s/\/\/[^\r\n]*//g'
++typeset g_CPP_g="0"
+ typeset g_idlFileList=""
+ 
+ ## MODULE TYPE CHECKER
+@@ -1172,9 +1176,9 @@
+ 		
+ 		if [[ $executionStatus == 0 ]] ; then
+ 			headerList=$(/bin/ls *.h *.i 2> /dev/null)
+-			templateList=$($EGREP -h -e '([^\/])*#.*include' *.h 2> /dev/null | \
+-					$EGREP cpp 2>/dev/null| \
+-					sed -e "s/.*\"\(.*\)\"/\1/g" 2> /dev/null)			#" Comment to correct highlight syntax in nedit
++			templateList=$($EGREP -h -e $g_CPP_template_regex *.h 2> /dev/null | \
++					$EGREP -h -e $g_CPP_cpptemplate_regex 2>/dev/null| \
++					sed -e $g_CPP_template_sed_commands 2> /dev/null)			#" Comment to correct highlight syntax in nedit
+ 			for file in $headerList ; do
+ 				if [[ $executionStatus == 0 ]] ; then
+ 					fileName=${file##*/}
+@@ -1285,9 +1289,9 @@
+ 			headerList=$(/bin/ls ?(*.h) 2> /dev/null)
+ 			includeList1=$(/bin/ls ?(*.i) 2> /dev/null)
+ 			includeList2=$(/bin/ls ?(*.inl) 2> /dev/null)
+-			templateList=$($EGREP -h -e '([^\/])*#.*include' *.h 2> /dev/null | \
+-					$EGREP cpp 2>/dev/null| \
+-					sed -e "s/.*\"\(.*\)\"/\1/g" 2> /dev/null)			#" Comment to correct highlight syntax in nedit
++			templateList=$($EGREP -h -e $g_CPP_template_regex *.h 2> /dev/null | \
++					$EGREP -h -e $g_CPP_cpptemplate_regex 2>/dev/null| \
++					sed -e $g_CPP_template_sed_commands 2> /dev/null)			#" Comment to correct highlight syntax in nedit
+ 
+ 			for file in $headerList ; do
+ 				if [[ $executionStatus == 0 ]] ; then
+@@ -1340,9 +1344,9 @@
+ 		cd $itemBaseDir
+ 	
+ 		headerList=$(/bin/ls ?(*.h) 2> /dev/null)
+-			templateList=$($EGREP -h -e '([^\/])*#.*include' *.h 2> /dev/null | \
+-					$EGREP cpp 2>/dev/null| \
+-					sed -e "s/.*\"\(.*\)\"/\1/g" 2> /dev/null)			#" Comment to correct highlight syntax in nedit
++			templateList=$($EGREP -h -e $g_CPP_template_regex *.h 2> /dev/null | \
++					$EGREP -h -e $g_CPP_cpptemplate_regex 2>/dev/null| \
++					sed -e $g_CPP_template_sed_commands 2> /dev/null)			#" Comment to correct highlight syntax in nedit
+ 		
+ 		for file in $headerList ; do
+ 			if [[ $executionStatus == 0 ]] ; then
+@@ -1416,9 +1420,9 @@
+ 			headerList=$(/bin/ls ?(*.h) 2> /dev/null)
+ 			includeList1=$(/bin/ls ?(*.i) 2> /dev/null)
+ 			includeList2=$(/bin/ls ?(*.inl) 2> /dev/null)
+-			templateList=$($EGREP -h -e '([^\/])*#.*include' *.h 2> /dev/null | \
+-					$EGREP cpp 2>/dev/null| \
+-					sed -e "s/.*\"\(.*\)\"/\1/g" 2> /dev/null)			#" Comment to correct highlight syntax in nedit
++			templateList=$($EGREP -h -e $g_CPP_template_regex *.h 2> /dev/null | \
++					$EGREP -h -e $g_CPP_cpptemplate_regex 2>/dev/null| \
++					sed -e $g_CPP_template_sed_commands 2> /dev/null)			#" Comment to correct highlight syntax in nedit
+ 
+ 			for file in $headerList ; do
+ 				if [[ $executionStatus == 0 ]] ; then

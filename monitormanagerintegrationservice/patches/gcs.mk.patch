@@ -1,0 +1,11 @@
+--- /opt/gcs/makefiles/gcs.mk	2021-07-05 11:30:11.503103500 +0000
++++ /opt/gcs/makefiles/gcs.mk	2021-07-05 11:33:19.423103500 +0000
+@@ -75,6 +75,8 @@
+ include $(MK)/bsdconfig.mk
+ include $(MK)/mysqlconfig.mk
+ include $(MK)/jsoncppconfig.mk
++include $(MK)/rabbitmqconfig.mk
++include $(MK)/yamlcppconfig.mk
+ include $(MK)/sqliteconfig.mk
+ include $(MK)/megaraconfig.mk
+ include $(MK)/curlconfig.mk
