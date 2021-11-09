@@ -1,0 +1,22 @@
+types:
+    idls:
+        - >
+            struct DoubleValue
+            {
+                double value;
+            };
+            
+systems:
+    fastdds: { type: fastdds }
+    fiware: { type: fiware, host: 172.27.0.5, port: 1026 }
+  
+routes:
+    dds_to_fiware: { from: fastdds, to: fiware }
+
+topics:
+    doubleMonitor1:
+        type: "DoubleValue"
+        route: dds_to_fiware
+    doubleMonitor2:
+        type: "DoubleValue"
+        route: dds_to_fiware
